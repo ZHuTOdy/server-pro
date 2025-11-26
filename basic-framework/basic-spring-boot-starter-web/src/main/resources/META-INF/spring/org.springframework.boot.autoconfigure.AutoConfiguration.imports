@@ -1,0 +1,7 @@
+cn.iocoder.basic.framework.apilog.config.BasicApiLogAutoConfiguration
+cn.iocoder.basic.framework.jackson.config.BasicJacksonAutoConfiguration
+cn.iocoder.basic.framework.swagger.config.BasicSwaggerAutoConfiguration
+cn.iocoder.basic.framework.web.config.BasicWebAutoConfiguration
+cn.iocoder.basic.framework.xss.config.BasicXssAutoConfiguration
+cn.iocoder.basic.framework.banner.config.BasicBannerAutoConfiguration
+cn.iocoder.basic.framework.encrypt.config.BasicApiEncryptAutoConfiguration

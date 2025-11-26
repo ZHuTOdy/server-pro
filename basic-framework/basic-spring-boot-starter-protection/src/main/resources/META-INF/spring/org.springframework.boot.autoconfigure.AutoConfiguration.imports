@@ -1,0 +1,4 @@
+cn.iocoder.basic.framework.idempotent.config.BasicIdempotentConfiguration
+cn.iocoder.basic.framework.lock4j.config.BasicLock4jConfiguration
+cn.iocoder.basic.framework.ratelimiter.config.BasicRateLimiterConfiguration
+cn.iocoder.basic.framework.signature.config.BasicApiSignatureAutoConfiguration

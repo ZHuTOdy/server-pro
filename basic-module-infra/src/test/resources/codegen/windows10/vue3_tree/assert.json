@@ -1,0 +1,49 @@
+[ {
+  "contentPath" : "java/InfraCategoryListReqVO",
+  "filePath" : "basic-module-infra/basic-module-infra-biz/src/main/java/cn/iocoder/basic/module/infra/controller/admin/demo/vo/InfraCategoryListReqVO.java"
+}, {
+  "contentPath" : "java/InfraCategoryRespVO",
+  "filePath" : "basic-module-infra/basic-module-infra-biz/src/main/java/cn/iocoder/basic/module/infra/controller/admin/demo/vo/InfraCategoryRespVO.java"
+}, {
+  "contentPath" : "java/InfraCategorySaveReqVO",
+  "filePath" : "basic-module-infra/basic-module-infra-biz/src/main/java/cn/iocoder/basic/module/infra/controller/admin/demo/vo/InfraCategorySaveReqVO.java"
+}, {
+  "contentPath" : "java/InfraCategoryController",
+  "filePath" : "basic-module-infra/basic-module-infra-biz/src/main/java/cn/iocoder/basic/module/infra/controller/admin/demo/InfraCategoryController.java"
+}, {
+  "contentPath" : "java/InfraCategoryDO",
+  "filePath" : "basic-module-infra/basic-module-infra-biz/src/main/java/cn/iocoder/basic/module/infra/dal/dataobject/demo/InfraCategoryDO.java"
+}, {
+  "contentPath" : "java/InfraCategoryMapper",
+  "filePath" : "basic-module-infra/basic-module-infra-biz/src/main/java/cn/iocoder/basic/module/infra/dal/mysql/demo/InfraCategoryMapper.java"
+}, {
+  "contentPath" : "xml/InfraCategoryMapper",
+  "filePath" : "basic-module-infra/basic-module-infra-biz/src/main/resources/mapper/demo/InfraCategoryMapper.xml"
+}, {
+  "contentPath" : "java/InfraCategoryServiceImpl",
+  "filePath" : "basic-module-infra/basic-module-infra-biz/src/main/java/cn/iocoder/basic/module/infra/service/demo/InfraCategoryServiceImpl.java"
+}, {
+  "contentPath" : "java/InfraCategoryService",
+  "filePath" : "basic-module-infra/basic-module-infra-biz/src/main/java/cn/iocoder/basic/module/infra/service/demo/InfraCategoryService.java"
+}, {
+  "contentPath" : "java/InfraCategoryServiceImplTest",
+  "filePath" : "basic-module-infra/basic-module-infra-biz/src/test/java/cn/iocoder/basic/module/infra/service/demo/InfraCategoryServiceImplTest.java"
+}, {
+  "contentPath" : "java/ErrorCodeConstants_手动操作",
+  "filePath" : "basic-module-infra/basic-module-infra-api/src/main/java/cn/iocoder/basic/module/infra/enums/ErrorCodeConstants_手动操作.java"
+}, {
+  "contentPath" : "sql/sql",
+  "filePath" : "sql/sql.sql"
+}, {
+  "contentPath" : "sql/h2",
+  "filePath" : "sql/h2.sql"
+}, {
+  "contentPath" : "vue/index",
+  "filePath" : "basic-ui-admin-vue3/src/views/infra/demo/index.vue"
+}, {
+  "contentPath" : "vue/CategoryForm",
+  "filePath" : "basic-ui-admin-vue3/src/views/infra/demo/CategoryForm.vue"
+}, {
+  "contentPath" : "ts/index",
+  "filePath" : "basic-ui-admin-vue3/src/api/infra/demo/index.ts"
+} ]

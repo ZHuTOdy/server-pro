@@ -1,0 +1,3 @@
+cn.iocoder.basic.framework.security.config.BasicSecurityAutoConfiguration
+cn.iocoder.basic.framework.security.config.BasicWebSecurityConfigurerAdapter
+cn.iocoder.basic.framework.operatelog.config.BasicOperateLogConfiguration

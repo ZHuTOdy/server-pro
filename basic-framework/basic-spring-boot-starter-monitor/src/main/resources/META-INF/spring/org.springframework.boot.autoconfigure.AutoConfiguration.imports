@@ -1,0 +1,2 @@
+cn.iocoder.basic.framework.tracer.config.BasicTracerAutoConfiguration
+cn.iocoder.basic.framework.tracer.config.BasicMetricsAutoConfiguration

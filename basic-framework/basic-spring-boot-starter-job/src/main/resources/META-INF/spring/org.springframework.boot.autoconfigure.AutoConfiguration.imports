@@ -1,0 +1,2 @@
+cn.iocoder.basic.framework.quartz.config.BasicQuartzAutoConfiguration
+cn.iocoder.basic.framework.quartz.config.BasicAsyncAutoConfiguration

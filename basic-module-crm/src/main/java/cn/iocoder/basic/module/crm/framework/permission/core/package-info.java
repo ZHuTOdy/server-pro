@@ -1,0 +1,1 @@
+package cn.iocoder.basic.module.crm.framework.permission.core;
