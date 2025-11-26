@@ -4,27 +4,27 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.iocoder.boot</groupId>
-    <artifactId>yudao</artifactId>
+    <artifactId>basic</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
     <modules>
-        <module>yudao-dependencies</module>
-        <module>yudao-framework</module>
+        <module>basic-dependencies</module>
+        <module>basic-framework</module>
         <!-- Server 主项目 -->
-        <module>yudao-server</module>
+        <module>basic-server</module>
         <!-- 各种 module 拓展 -->
-        <module>yudao-module-system</module>
-        <module>yudao-module-infra</module>
-<!--        <module>yudao-module-member</module>-->
-<!--        <module>yudao-module-bpm</module>-->
-<!--        <module>yudao-module-report</module>-->
-<!--        <module>yudao-module-mp</module>-->
-<!--        <module>yudao-module-pay</module>-->
-<!--        <module>yudao-module-mall</module>-->
-<!--        <module>yudao-module-crm</module>-->
-<!--        <module>yudao-module-erp</module>-->
-<!--        <module>yudao-module-ai</module>-->
-<!--        <module>yudao-module-iot</module>-->
+        <module>basic-module-system</module>
+        <module>basic-module-infra</module>
+<!--        <module>basic-module-member</module>-->
+<!--        <module>basic-module-bpm</module>-->
+<!--        <module>basic-module-report</module>-->
+<!--        <module>basic-module-mp</module>-->
+<!--        <module>basic-module-pay</module>-->
+<!--        <module>basic-module-mall</module>-->
+<!--        <module>basic-module-crm</module>-->
+<!--        <module>basic-module-erp</module>-->
+<!--        <module>basic-module-ai</module>-->
+<!--        <module>basic-module-iot</module>-->
     </modules>
 
     <name>${project.artifactId}</name>
@@ -51,7 +51,7 @@
         <dependencies>
             <dependency>
                 <groupId>cn.iocoder.boot</groupId>
-                <artifactId>yudao-dependencies</artifactId>
+                <artifactId>basic-dependencies</artifactId>
                 <version>${revision}</version>
                 <type>pom</type>
                 <scope>import</scope>
