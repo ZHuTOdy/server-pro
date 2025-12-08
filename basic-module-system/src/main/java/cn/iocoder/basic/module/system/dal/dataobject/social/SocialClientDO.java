@@ -2,7 +2,7 @@ package cn.iocoder.basic.module.system.dal.dataobject.social;
 
 import cn.iocoder.basic.framework.common.enums.CommonStatusEnum;
 import cn.iocoder.basic.framework.common.enums.UserTypeEnum;
-import cn.iocoder.basic.framework.tenant.core.db.TenantBaseDO;
+import cn.iocoder.basic.framework.mybatis.core.dataobject.BaseDO;
 import cn.iocoder.basic.module.system.enums.social.SocialTypeEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -24,7 +24,7 @@ import me.zhyd.oauth.config.AuthConfig;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SocialClientDO extends TenantBaseDO {
+public class SocialClientDO extends BaseDO {
 
     /**
      * 编号，自增

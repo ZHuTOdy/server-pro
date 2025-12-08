@@ -5,7 +5,6 @@ import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.extra.spring.SpringUtil;
 import cn.iocoder.basic.framework.common.core.KeyValue;
 import cn.iocoder.basic.framework.common.util.json.JsonUtils;
-import cn.iocoder.basic.framework.tenant.core.context.TenantContextHolder;
 import cn.iocoder.basic.framework.tenant.core.util.TenantUtils;
 import cn.iocoder.basic.module.bpm.controller.admin.definition.vo.form.BpmFormFieldVO;
 import cn.iocoder.basic.module.bpm.dal.dataobject.definition.BpmProcessDefinitionInfoDO;
@@ -63,8 +62,7 @@ public class FlowableUtils {
     }
 
     public static String getTenantId() {
-        Long tenantId = TenantContextHolder.getTenantId();
-        return tenantId != null ? String.valueOf(tenantId) : ProcessEngineConfiguration.NO_TENANT_ID;
+        return ProcessEngineConfiguration.NO_TENANT_ID;
     }
 
     public static void execute(String tenantIdStr, Runnable runnable) {

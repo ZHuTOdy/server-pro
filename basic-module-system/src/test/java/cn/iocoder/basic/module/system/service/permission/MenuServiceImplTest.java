@@ -7,7 +7,6 @@ import cn.iocoder.basic.module.system.controller.admin.permission.vo.menu.MenuSa
 import cn.iocoder.basic.module.system.dal.dataobject.permission.MenuDO;
 import cn.iocoder.basic.module.system.dal.mysql.permission.MenuMapper;
 import cn.iocoder.basic.module.system.enums.permission.MenuTypeEnum;
-import cn.iocoder.basic.module.system.service.tenant.TenantService;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Import;
@@ -15,10 +14,9 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
 
-import static cn.iocoder.basic.framework.common.util.collection.SetUtils.asSet;
 import static cn.iocoder.basic.framework.common.util.object.ObjectUtils.cloneIgnoreId;
 import static cn.iocoder.basic.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.basic.framework.test.core.util.AssertUtils.assertServiceException;
@@ -27,8 +25,6 @@ import static cn.iocoder.basic.module.system.dal.dataobject.permission.MenuDO.ID
 import static cn.iocoder.basic.module.system.enums.ErrorCodeConstants.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.mockito.ArgumentMatchers.argThat;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 
 @Import(MenuServiceImpl.class)
@@ -42,8 +38,6 @@ public class MenuServiceImplTest extends BaseDbUnitTest {
 
     @MockitoBean
     private PermissionService permissionService;
-    @MockitoBean
-    private TenantService tenantService;
 
     @Test
     public void testCreateMenu_success() {
@@ -171,20 +165,16 @@ public class MenuServiceImplTest extends BaseDbUnitTest {
         menuMapper.insert(menu101);
         MenuDO menu102 = randomPojo(MenuDO.class, o -> o.setId(102L).setStatus(CommonStatusEnum.ENABLE.getStatus()));
         menuMapper.insert(menu102);
-        // mock 过滤菜单
-        Set<Long> menuIds = asSet(100L, 101L);
-        doNothing().when(tenantService).handleTenantMenu(argThat(handler -> {
-            handler.handle(menuIds);
-            return true;
-        }));
         // 准备参数
         MenuListReqVO reqVO = new MenuListReqVO().setStatus(CommonStatusEnum.ENABLE.getStatus());
 
         // 调用
         List<MenuDO> result = menuService.getMenuListByTenant(reqVO);
+        result.sort(Comparator.comparing(MenuDO::getId));
         // 断言
-        assertEquals(1, result.size());
+        assertEquals(2, result.size());
         assertPojoEquals(menu100, result.get(0));
+        assertPojoEquals(menu102, result.get(1));
     }
 
     @Test

@@ -5,7 +5,6 @@ import cn.iocoder.basic.framework.common.enums.CommonStatusEnum;
 import cn.iocoder.basic.framework.common.util.json.JsonUtils;
 import cn.iocoder.basic.module.pay.enums.PayChannelEnum;
 import cn.iocoder.basic.module.pay.framework.pay.core.client.PayClientConfig;
-import cn.iocoder.basic.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.basic.module.pay.dal.dataobject.app.PayAppDO;
 import cn.iocoder.basic.module.pay.framework.pay.core.client.impl.NonePayClientConfig;
 import cn.iocoder.basic.module.pay.framework.pay.core.client.impl.alipay.AlipayAppPayClient;
@@ -37,7 +36,7 @@ import java.lang.reflect.Field;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PayChannelDO extends TenantBaseDO {
+public class PayChannelDO extends BaseDO {
 
     /**
      * 渠道编号，数据库自增

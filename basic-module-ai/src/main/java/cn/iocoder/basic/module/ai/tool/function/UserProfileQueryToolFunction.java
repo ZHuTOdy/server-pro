@@ -3,7 +3,6 @@ package cn.iocoder.basic.module.ai.tool.function;
 import cn.iocoder.basic.module.ai.util.AiUtils;
 import cn.iocoder.basic.framework.common.util.object.BeanUtils;
 import cn.iocoder.basic.framework.security.core.LoginUser;
-import cn.iocoder.basic.framework.tenant.core.util.TenantUtils;
 import cn.iocoder.basic.module.system.api.user.AdminUserApi;
 import cn.iocoder.basic.module.system.api.user.dto.AdminUserRespDTO;
 import com.fasterxml.jackson.annotation.JsonClassDescription;
@@ -83,10 +82,8 @@ public class UserProfileQueryToolFunction
             }
             request.setId(loginUser.getId());
         }
-        return TenantUtils.execute(tenantId, () -> {
-            AdminUserRespDTO user = adminUserApi.getUser(request.getId());
-            return BeanUtils.toBean(user, Response.class);
-        });
+        AdminUserRespDTO user = adminUserApi.getUser(request.getId());
+        return BeanUtils.toBean(user, Response.class);
     }
 
 }

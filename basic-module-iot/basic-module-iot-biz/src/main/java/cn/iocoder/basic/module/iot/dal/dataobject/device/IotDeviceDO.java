@@ -1,7 +1,6 @@
 package cn.iocoder.basic.module.iot.dal.dataobject.device;
 
 import cn.iocoder.basic.framework.mybatis.core.type.LongSetTypeHandler;
-import cn.iocoder.basic.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.basic.module.iot.dal.dataobject.ota.IotOtaFirmwareDO;
 import cn.iocoder.basic.module.iot.dal.dataobject.product.IotProductDO;
 import cn.iocoder.basic.module.iot.core.enums.IotDeviceStateEnum;
@@ -26,7 +25,7 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class IotDeviceDO extends TenantBaseDO {
+public class IotDeviceDO extends BaseDO {
 
     /**
      * 设备编号 - 全部设备

@@ -1,7 +1,6 @@
 package cn.iocoder.basic.module.infra.dal.dataobject.job;
 
 import cn.iocoder.basic.framework.mybatis.core.dataobject.BaseDO;
-import cn.iocoder.basic.framework.tenant.core.aop.TenantIgnore;
 import cn.iocoder.basic.module.infra.enums.job.JobStatusEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -21,7 +20,6 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@TenantIgnore
 public class JobDO extends BaseDO {
 
     /**

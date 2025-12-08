@@ -27,7 +27,6 @@ import cn.iocoder.basic.module.system.dal.mysql.user.AdminUserMapper;
 import cn.iocoder.basic.module.system.service.dept.DeptService;
 import cn.iocoder.basic.module.system.service.dept.PostService;
 import cn.iocoder.basic.module.system.service.permission.PermissionService;
-import cn.iocoder.basic.module.system.service.tenant.TenantService;
 import com.google.common.annotations.VisibleForTesting;
 import com.mzt.logapi.context.LogRecordContext;
 import com.mzt.logapi.service.impl.DiffParseFunction;
@@ -35,7 +34,6 @@ import com.mzt.logapi.starter.annotation.LogRecord;
 import jakarta.annotation.Resource;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -72,9 +70,6 @@ public class AdminUserServiceImpl implements AdminUserService {
     private PermissionService permissionService;
     @Resource
     private PasswordEncoder passwordEncoder;
-    @Resource
-    @Lazy // 延迟，避免循环依赖报错
-    private TenantService tenantService;
 
     @Resource
     private UserPostMapper userPostMapper;
@@ -87,14 +82,7 @@ public class AdminUserServiceImpl implements AdminUserService {
     @LogRecord(type = SYSTEM_USER_TYPE, subType = SYSTEM_USER_CREATE_SUB_TYPE, bizNo = "{{#user.id}}",
             success = SYSTEM_USER_CREATE_SUCCESS)
     public Long createUser(UserSaveReqVO createReqVO) {
-        // 1.1 校验账户配合
-        tenantService.handleTenantInfo(tenant -> {
-            long count = userMapper.selectCount();
-            if (count >= tenant.getAccountCount()) {
-                throw exception(USER_COUNT_MAX, tenant.getAccountCount());
-            }
-        });
-        // 1.2 校验正确性
+        // 1.1 校验正确性
         validateUserForCreateOrUpdate(null, createReqVO.getUsername(),
                 createReqVO.getMobile(), createReqVO.getEmail(), createReqVO.getDeptId(), createReqVO.getPostIds());
         // 2.1 插入用户
@@ -119,14 +107,7 @@ public class AdminUserServiceImpl implements AdminUserService {
         if (ObjUtil.notEqual(configApi.getConfigValueByKey(USER_REGISTER_ENABLED_KEY), "true")) {
             throw exception(USER_REGISTER_DISABLED);
         }
-        // 1.2 校验账户配合
-        tenantService.handleTenantInfo(tenant -> {
-            long count = userMapper.selectCount();
-            if (count >= tenant.getAccountCount()) {
-                throw exception(USER_COUNT_MAX, tenant.getAccountCount());
-            }
-        });
-        // 1.3 校验正确性
+        // 1.2 校验正确性
         validateUserForCreateOrUpdate(null, registerReqVO.getUsername(), null, null, null, null);
 
         // 2. 插入用户

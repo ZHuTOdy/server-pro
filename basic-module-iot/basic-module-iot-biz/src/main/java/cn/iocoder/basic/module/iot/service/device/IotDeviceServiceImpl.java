@@ -9,7 +9,6 @@ import cn.iocoder.basic.framework.common.exception.ServiceException;
 import cn.iocoder.basic.framework.common.pojo.PageResult;
 import cn.iocoder.basic.framework.common.util.object.BeanUtils;
 import cn.iocoder.basic.framework.common.util.validation.ValidationUtils;
-import cn.iocoder.basic.framework.tenant.core.aop.TenantIgnore;
 import cn.iocoder.basic.framework.tenant.core.util.TenantUtils;
 import cn.iocoder.basic.module.iot.controller.admin.device.vo.device.*;
 import cn.iocoder.basic.module.iot.core.biz.dto.IotDeviceAuthReqDTO;
@@ -246,14 +245,12 @@ public class IotDeviceServiceImpl implements IotDeviceService {
 
     @Override
     @Cacheable(value = RedisKeyConstants.DEVICE, key = "#id", unless = "#result == null")
-    @TenantIgnore // 忽略租户信息
     public IotDeviceDO getDeviceFromCache(Long id) {
         return deviceMapper.selectById(id);
     }
 
     @Override
     @Cacheable(value = RedisKeyConstants.DEVICE, key = "#productKey + '_' + #deviceName", unless = "#result == null")
-    @TenantIgnore // 忽略租户信息，跨租户 productKey + deviceName 是唯一的
     public IotDeviceDO getDeviceFromCache(String productKey, String deviceName) {
         return deviceMapper.selectByProductKeyAndDeviceName(productKey, deviceName);
     }

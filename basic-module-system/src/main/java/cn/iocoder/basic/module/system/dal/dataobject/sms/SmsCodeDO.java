@@ -1,7 +1,6 @@
 package cn.iocoder.basic.module.system.dal.dataobject.sms;
 
 import cn.iocoder.basic.framework.mybatis.core.dataobject.BaseDO;
-import cn.iocoder.basic.framework.tenant.core.aop.TenantIgnore;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
@@ -22,7 +21,6 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@TenantIgnore
 public class SmsCodeDO extends BaseDO {
 
     /**

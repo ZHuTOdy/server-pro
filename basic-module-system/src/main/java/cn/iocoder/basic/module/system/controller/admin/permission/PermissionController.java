@@ -1,12 +1,10 @@
 package cn.iocoder.basic.module.system.controller.admin.permission;
 
-import cn.hutool.core.collection.CollUtil;
 import cn.iocoder.basic.framework.common.pojo.CommonResult;
 import cn.iocoder.basic.module.system.controller.admin.permission.vo.permission.PermissionAssignRoleDataScopeReqVO;
 import cn.iocoder.basic.module.system.controller.admin.permission.vo.permission.PermissionAssignRoleMenuReqVO;
 import cn.iocoder.basic.module.system.controller.admin.permission.vo.permission.PermissionAssignUserRoleReqVO;
 import cn.iocoder.basic.module.system.service.permission.PermissionService;
-import cn.iocoder.basic.module.system.service.tenant.TenantService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,8 +30,6 @@ public class PermissionController {
 
     @Resource
     private PermissionService permissionService;
-    @Resource
-    private TenantService tenantService;
 
     @Operation(summary = "获得角色拥有的菜单编号")
     @Parameter(name = "roleId", description = "角色编号", required = true)
@@ -47,9 +43,6 @@ public class PermissionController {
     @Operation(summary = "赋予角色菜单")
     @PreAuthorize("@ss.hasPermission('system:permission:assign-role-menu')")
     public CommonResult<Boolean> assignRoleMenu(@Validated @RequestBody PermissionAssignRoleMenuReqVO reqVO) {
-        // 开启多租户的情况下，需要过滤掉未开通的菜单
-        tenantService.handleTenantMenu(menuIds -> reqVO.getMenuIds().removeIf(menuId -> !CollUtil.contains(menuIds, menuId)));
-
         // 执行菜单的分配
         permissionService.assignRoleMenu(reqVO.getRoleId(), reqVO.getMenuIds());
         return success(true);

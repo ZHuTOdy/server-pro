@@ -2,7 +2,6 @@ package cn.iocoder.basic.module.system.dal.dataobject.sms;
 
 import cn.iocoder.basic.framework.common.enums.UserTypeEnum;
 import cn.iocoder.basic.framework.mybatis.core.dataobject.BaseDO;
-import cn.iocoder.basic.framework.tenant.core.aop.TenantIgnore;
 import cn.iocoder.basic.module.system.enums.sms.SmsReceiveStatusEnum;
 import cn.iocoder.basic.module.system.enums.sms.SmsSendStatusEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
@@ -28,7 +27,6 @@ import java.util.Map;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@TenantIgnore
 public class SmsLogDO extends BaseDO {
 
     /**

@@ -1,7 +1,6 @@
 package cn.iocoder.basic.module.pay.job.notify;
 
 import cn.iocoder.basic.framework.quartz.core.handler.JobHandler;
-import cn.iocoder.basic.framework.tenant.core.job.TenantJob;
 import cn.iocoder.basic.module.pay.service.notify.PayNotifyService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -22,7 +21,6 @@ public class PayNotifyJob implements JobHandler {
     private PayNotifyService payNotifyService;
 
     @Override
-    @TenantJob
     public String execute(String param) throws Exception {
         int notifyCount = payNotifyService.executeNotify();
         return String.format("执行支付通知 %s 个", notifyCount);

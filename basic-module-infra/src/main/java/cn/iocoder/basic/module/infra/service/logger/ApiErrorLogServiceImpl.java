@@ -4,8 +4,6 @@ import cn.iocoder.basic.framework.common.biz.infra.logger.dto.ApiErrorLogCreateR
 import cn.iocoder.basic.framework.common.pojo.PageResult;
 import cn.iocoder.basic.framework.common.util.object.BeanUtils;
 import cn.iocoder.basic.framework.common.util.string.StrUtils;
-import cn.iocoder.basic.framework.tenant.core.context.TenantContextHolder;
-import cn.iocoder.basic.framework.tenant.core.util.TenantUtils;
 import cn.iocoder.basic.module.infra.controller.admin.logger.vo.apierrorlog.ApiErrorLogPageReqVO;
 import cn.iocoder.basic.module.infra.dal.dataobject.logger.ApiErrorLogDO;
 import cn.iocoder.basic.module.infra.dal.mysql.logger.ApiErrorLogMapper;
@@ -41,12 +39,7 @@ public class ApiErrorLogServiceImpl implements ApiErrorLogService {
                 .setProcessStatus(ApiErrorLogProcessStatusEnum.INIT.getStatus());
         apiErrorLog.setRequestParams(StrUtils.maxLength(apiErrorLog.getRequestParams(), REQUEST_PARAMS_MAX_LENGTH));
         try {
-            if (TenantContextHolder.getTenantId() != null) {
-                apiErrorLogMapper.insert(apiErrorLog);
-            } else {
-                // 极端情况下，上下文中没有租户时，此时忽略租户上下文，避免插入失败！
-                TenantUtils.executeIgnore(() -> apiErrorLogMapper.insert(apiErrorLog));
-            }
+            apiErrorLogMapper.insert(apiErrorLog);
         } catch (Exception ex) {
             // 兜底处理，目前只有 basic-cloud 会发生：https://gitee.com/basiccode/basic-cloud-mini/issues/IC1O0A
             log.error("[createApiErrorLog][记录时({}) 发生异常]", createDTO, ex);

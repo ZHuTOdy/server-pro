@@ -1,7 +1,6 @@
 package cn.iocoder.basic.module.trade.job.order;
 
 import cn.iocoder.basic.framework.quartz.core.handler.JobHandler;
-import cn.iocoder.basic.framework.tenant.core.job.TenantJob;
 import cn.iocoder.basic.module.trade.service.order.TradeOrderUpdateService;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +18,6 @@ public class TradeOrderAutoReceiveJob implements JobHandler {
     private TradeOrderUpdateService tradeOrderUpdateService;
 
     @Override
-    @TenantJob
     public String execute(String param) {
         int count = tradeOrderUpdateService.receiveOrderBySystem();
         return String.format("自动收货 %s 个", count);

@@ -2,7 +2,6 @@ package cn.iocoder.basic.module.trade.job.brokerage;
 
 import cn.hutool.core.util.StrUtil;
 import cn.iocoder.basic.framework.quartz.core.handler.JobHandler;
-import cn.iocoder.basic.framework.tenant.core.job.TenantJob;
 import cn.iocoder.basic.module.trade.service.brokerage.BrokerageRecordService;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +19,6 @@ public class BrokerageRecordUnfreezeJob implements JobHandler {
     private BrokerageRecordService brokerageRecordService;
 
     @Override
-    @TenantJob
     public String execute(String param) {
         int count = brokerageRecordService.unfreezeRecord();
         return StrUtil.format("解冻佣金 {} 个", count);

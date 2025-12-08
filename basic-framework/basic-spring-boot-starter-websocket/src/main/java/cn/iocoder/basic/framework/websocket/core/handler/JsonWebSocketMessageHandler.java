@@ -3,7 +3,6 @@ package cn.iocoder.basic.framework.websocket.core.handler;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.TypeUtil;
 import cn.iocoder.basic.framework.common.util.json.JsonUtils;
-import cn.iocoder.basic.framework.tenant.core.util.TenantUtils;
 import cn.iocoder.basic.framework.websocket.core.listener.WebSocketMessageListener;
 import cn.iocoder.basic.framework.websocket.core.message.JsonWebSocketMessage;
 import cn.iocoder.basic.framework.websocket.core.util.WebSocketFrameworkUtils;
@@ -73,8 +72,7 @@ public class JsonWebSocketMessageHandler extends TextWebSocketHandler {
             // 2.3 处理消息
             Type type = TypeUtil.getTypeArgument(messageListener.getClass(), 0);
             Object messageObj = JsonUtils.parseObject(jsonMessage.getContent(), type);
-            Long tenantId = WebSocketFrameworkUtils.getTenantId(session);
-            TenantUtils.execute(tenantId, () -> messageListener.onMessage(session, messageObj));
+            messageListener.onMessage(session, messageObj);
         } catch (Throwable ex) {
             log.error("[handleTextMessage][session({}) message({}) 处理异常]", session.getId(), message.getPayload());
         }

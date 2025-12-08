@@ -29,12 +29,6 @@
             <version>${revision}</version>
         </dependency>
 
-        <!-- 业务组件 -->
-        <dependency>
-            <groupId>cn.iocoder.boot</groupId>
-            <artifactId>basic-spring-boot-starter-biz-tenant</artifactId>
-        </dependency>
-
         <!-- Web 相关 -->
         <dependency>
             <groupId>cn.iocoder.boot</groupId>

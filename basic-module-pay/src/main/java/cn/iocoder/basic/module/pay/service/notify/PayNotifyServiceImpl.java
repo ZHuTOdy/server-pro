@@ -10,7 +10,6 @@ import cn.iocoder.basic.framework.common.pojo.CommonResult;
 import cn.iocoder.basic.framework.common.pojo.PageResult;
 import cn.iocoder.basic.framework.common.util.date.DateUtils;
 import cn.iocoder.basic.framework.common.util.json.JsonUtils;
-import cn.iocoder.basic.framework.tenant.core.util.TenantUtils;
 import cn.iocoder.basic.module.pay.api.notify.dto.PayOrderNotifyReqDTO;
 import cn.iocoder.basic.module.pay.api.notify.dto.PayRefundNotifyReqDTO;
 import cn.iocoder.basic.module.pay.api.notify.dto.PayTransferNotifyReqDTO;
@@ -50,6 +49,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import static cn.iocoder.basic.framework.common.util.date.LocalDateTimeUtils.addTime;
+import static cn.iocoder.basic.framework.web.core.util.WebFrameworkUtils.HEADER_TENANT_ID;
 import static cn.iocoder.basic.module.pay.framework.job.config.PayJobConfiguration.NOTIFY_THREAD_POOL_TASK_EXECUTOR;
 
 /**
@@ -247,7 +247,9 @@ public class PayNotifyServiceImpl implements PayNotifyService {
         }
         // 拼接 header 参数
         Map<String, String> headers = new HashMap<>();
-        TenantUtils.addTenantHeader(headers, task.getTenantId());
+        if (task.getTenantId() != null) {
+            headers.put(HEADER_TENANT_ID, String.valueOf(task.getTenantId()));
+        }
 
         // 发起请求
         try (HttpResponse response = HttpUtil.createPost(task.getNotifyUrl())

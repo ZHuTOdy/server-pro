@@ -10,7 +10,6 @@ import cn.iocoder.basic.framework.common.util.number.MoneyUtils;
 import cn.iocoder.basic.module.pay.framework.pay.core.client.PayClient;
 import cn.iocoder.basic.module.pay.framework.pay.core.client.dto.order.PayOrderRespDTO;
 import cn.iocoder.basic.module.pay.framework.pay.core.client.dto.order.PayOrderUnifiedReqDTO;
-import cn.iocoder.basic.framework.tenant.core.util.TenantUtils;
 import cn.iocoder.basic.module.pay.api.order.dto.PayOrderCreateReqDTO;
 import cn.iocoder.basic.module.pay.controller.admin.order.vo.PayOrderExportReqVO;
 import cn.iocoder.basic.module.pay.controller.admin.order.vo.PayOrderPageReqVO;
@@ -259,7 +258,7 @@ public class PayOrderServiceImpl implements PayOrderService {
         // 校验支付渠道是否有效
         PayChannelDO channel = channelService.validPayChannel(channelId);
         // 更新支付订单为已支付
-        TenantUtils.execute(channel.getTenantId(), () -> getSelf().notifyOrder(channel, notify));
+        getSelf().notifyOrder(channel, notify);
     }
 
     /**

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Annotation profile for basic" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -12,23 +13,22 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.6.3/mapstruct-processor-1.6.3.jar" />
         </processorPath>
-        <module name="basic-spring-boot-starter-job" />
-        <module name="basic-module-infra" />
-        <module name="basic-server" />
-        <module name="basic-spring-boot-starter-test" />
         <module name="basic-spring-boot-starter-biz-data-permission" />
-        <module name="basic-spring-boot-starter-security" />
-        <module name="basic-spring-boot-starter-redis" />
-        <module name="basic-spring-boot-starter-mybatis" />
-        <module name="basic-spring-boot-starter-protection" />
+        <module name="basic-server" />
         <module name="basic-spring-boot-starter-web" />
-        <module name="basic-module-system" />
-        <module name="basic-spring-boot-starter-biz-ip" />
-        <module name="basic-spring-boot-starter-biz-tenant" />
-        <module name="basic-spring-boot-starter-monitor" />
-        <module name="basic-spring-boot-starter-websocket" />
         <module name="basic-spring-boot-starter-mq" />
+        <module name="basic-spring-boot-starter-monitor" />
+        <module name="basic-module-infra" />
+        <module name="basic-module-system" />
+        <module name="basic-spring-boot-starter-redis" />
+        <module name="basic-spring-boot-starter-protection" />
         <module name="basic-common" />
+        <module name="basic-spring-boot-starter-websocket" />
+        <module name="basic-spring-boot-starter-job" />
+        <module name="basic-spring-boot-starter-biz-ip" />
+        <module name="basic-spring-boot-starter-mybatis" />
+        <module name="basic-spring-boot-starter-test" />
+        <module name="basic-spring-boot-starter-security" />
         <module name="basic-spring-boot-starter-excel" />
       </profile>
     </annotationProcessing>

@@ -1,7 +1,6 @@
 package cn.iocoder.basic.module.infra.dal.dataobject.file;
 
 import cn.iocoder.basic.framework.mybatis.core.dataobject.BaseDO;
-import cn.iocoder.basic.framework.tenant.core.aop.TenantIgnore;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
@@ -20,7 +19,6 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@TenantIgnore
 public class FileDO extends BaseDO {
 
     /**

@@ -6,7 +6,6 @@ import cn.iocoder.basic.framework.common.pojo.PageResult;
 import cn.iocoder.basic.module.pay.framework.pay.core.client.PayClient;
 import cn.iocoder.basic.module.pay.framework.pay.core.client.dto.refund.PayRefundRespDTO;
 import cn.iocoder.basic.module.pay.framework.pay.core.client.dto.refund.PayRefundUnifiedReqDTO;
-import cn.iocoder.basic.framework.tenant.core.util.TenantUtils;
 import cn.iocoder.basic.module.pay.api.refund.dto.PayRefundCreateReqDTO;
 import cn.iocoder.basic.module.pay.controller.admin.refund.vo.PayRefundExportReqVO;
 import cn.iocoder.basic.module.pay.controller.admin.refund.vo.PayRefundPageReqVO;
@@ -189,7 +188,7 @@ public class PayRefundServiceImpl implements PayRefundService {
         // 校验支付渠道是否有效
         PayChannelDO channel = channelService.validPayChannel(channelId);
         // 更新退款订单
-        TenantUtils.execute(channel.getTenantId(), () -> getSelf().notifyRefund(channel, notify));
+        getSelf().notifyRefund(channel, notify);
     }
 
     /**

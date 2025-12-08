@@ -2,7 +2,6 @@ package cn.iocoder.basic.module.infra.dal.dataobject.job;
 
 import cn.iocoder.basic.framework.mybatis.core.dataobject.BaseDO;
 import cn.iocoder.basic.framework.quartz.core.handler.JobHandler;
-import cn.iocoder.basic.framework.tenant.core.aop.TenantIgnore;
 import cn.iocoder.basic.module.infra.enums.job.JobLogStatusEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -23,7 +22,6 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@TenantIgnore
 public class JobLogDO extends BaseDO {
 
     /**

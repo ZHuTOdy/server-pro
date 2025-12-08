@@ -2,7 +2,6 @@ package cn.iocoder.basic.module.pay.job.refund;
 
 import cn.hutool.core.util.StrUtil;
 import cn.iocoder.basic.framework.quartz.core.handler.JobHandler;
-import cn.iocoder.basic.framework.tenant.core.job.TenantJob;
 import cn.iocoder.basic.module.pay.service.refund.PayRefundService;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +21,6 @@ public class PayRefundSyncJob implements JobHandler {
     private PayRefundService refundService;
 
     @Override
-    @TenantJob
     public String execute(String param) {
         int count = refundService.syncRefund();
         return StrUtil.format("同步退款订单 {} 个", count);

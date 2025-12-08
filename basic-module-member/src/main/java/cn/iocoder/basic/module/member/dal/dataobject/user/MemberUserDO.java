@@ -4,7 +4,6 @@ import cn.iocoder.basic.framework.common.enums.CommonStatusEnum;
 import cn.iocoder.basic.framework.common.enums.TerminalEnum;
 import cn.iocoder.basic.framework.ip.core.Area;
 import cn.iocoder.basic.framework.mybatis.core.type.LongListTypeHandler;
-import cn.iocoder.basic.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.basic.module.member.dal.dataobject.group.MemberGroupDO;
 import cn.iocoder.basic.module.member.dal.dataobject.level.MemberLevelDO;
 import cn.iocoder.basic.module.system.enums.common.SexEnum;
@@ -32,7 +31,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MemberUserDO extends TenantBaseDO {
+public class MemberUserDO extends BaseDO {
 
     // ========== 账号信息 ==========
 

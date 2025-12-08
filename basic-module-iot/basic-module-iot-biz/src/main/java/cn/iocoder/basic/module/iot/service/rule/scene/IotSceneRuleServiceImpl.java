@@ -7,7 +7,6 @@ import cn.hutool.extra.spring.SpringUtil;
 import cn.iocoder.basic.framework.common.enums.CommonStatusEnum;
 import cn.iocoder.basic.framework.common.pojo.PageResult;
 import cn.iocoder.basic.framework.common.util.object.BeanUtils;
-import cn.iocoder.basic.framework.tenant.core.aop.TenantIgnore;
 import cn.iocoder.basic.framework.tenant.core.util.TenantUtils;
 import cn.iocoder.basic.module.iot.controller.admin.rule.vo.scene.IotSceneRulePageReqVO;
 import cn.iocoder.basic.module.iot.controller.admin.rule.vo.scene.IotSceneRuleSaveReqVO;
@@ -158,7 +157,6 @@ public class IotSceneRuleServiceImpl implements IotSceneRuleService {
 
     @Override
     @Cacheable(value = RedisKeyConstants.SCENE_RULE_LIST, key = "#productId + '_' + #deviceId ")
-    @TenantIgnore // 忽略租户隔离：因为 IotSceneRuleMessageHandler 调用时，一般未传递租户，所以需要忽略
     public List<IotSceneRuleDO> getSceneRuleListByProductIdAndDeviceIdFromCache(Long productId, Long deviceId) {
         // 1. 查询启用状态的规则场景
         List<IotSceneRuleDO> enabledList = sceneRuleMapper.selectList(IotSceneRuleDO::getStatus, CommonStatusEnum.ENABLE.getStatus());

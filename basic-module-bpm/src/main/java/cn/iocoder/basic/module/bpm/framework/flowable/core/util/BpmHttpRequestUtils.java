@@ -6,7 +6,6 @@ import cn.iocoder.basic.framework.common.core.KeyValue;
 import cn.iocoder.basic.framework.common.pojo.CommonResult;
 import cn.iocoder.basic.framework.common.util.json.JsonUtils;
 import cn.iocoder.basic.framework.common.util.spring.SpringUtils;
-import cn.iocoder.basic.framework.tenant.core.context.TenantContextHolder;
 import cn.iocoder.basic.module.bpm.api.event.BpmProcessInstanceStatusEvent;
 import cn.iocoder.basic.module.bpm.controller.admin.definition.vo.model.simple.BpmSimpleModelNodeVO;
 import cn.iocoder.basic.module.bpm.enums.definition.BpmHttpRequestParamTypeEnum;
@@ -83,14 +82,10 @@ public class BpmHttpRequestUtils {
         // 1.1 设置请求头
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        if (TenantContextHolder.getTenantId() != null) {
-            headers.add(HEADER_TENANT_ID, String.valueOf(TenantContextHolder.getTenantId()));
-        } else {
-            BpmProcessInstanceService processInstanceService = SpringUtils.getBean(BpmProcessInstanceService.class);
-            ProcessInstance processInstance = processInstanceService.getProcessInstance(event.getId());
-            if (processInstance != null) {
-                headers.add(HEADER_TENANT_ID, String.valueOf(TenantContextHolder.getTenantId()));
-            }
+        BpmProcessInstanceService processInstanceService = SpringUtils.getBean(BpmProcessInstanceService.class);
+        ProcessInstance processInstance = processInstanceService.getProcessInstance(event.getId());
+        if (processInstance != null && processInstance.getTenantId() != null) {
+            headers.add(HEADER_TENANT_ID, processInstance.getTenantId());
         }
         // 1.2 设置请求体
 //        MultiValueMap<String, String> body = new LinkedMultiValueMap<>();

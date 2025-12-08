@@ -3,7 +3,6 @@ package cn.iocoder.basic.module.infra.dal.dataobject.file;
 import cn.hutool.core.util.StrUtil;
 import cn.iocoder.basic.framework.common.util.json.JsonUtils;
 import cn.iocoder.basic.framework.mybatis.core.dataobject.BaseDO;
-import cn.iocoder.basic.framework.tenant.core.aop.TenantIgnore;
 import cn.iocoder.basic.module.infra.framework.file.core.client.FileClientConfig;
 import cn.iocoder.basic.module.infra.framework.file.core.client.db.DBFileClientConfig;
 import cn.iocoder.basic.module.infra.framework.file.core.client.ftp.FtpFileClientConfig;
@@ -33,7 +32,6 @@ import java.lang.reflect.Field;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@TenantIgnore
 public class FileConfigDO extends BaseDO {
 
     /**

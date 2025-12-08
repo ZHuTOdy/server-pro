@@ -3,7 +3,6 @@ package cn.iocoder.basic.module.ai.util;
 import cn.hutool.core.util.ObjUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.iocoder.basic.framework.security.core.util.SecurityFrameworkUtils;
-import cn.iocoder.basic.framework.tenant.core.context.TenantContextHolder;
 import cn.iocoder.basic.module.ai.enums.model.AiPlatformEnum;
 import com.alibaba.cloud.ai.dashscope.chat.DashScopeChatOptions;
 import org.springaicommunity.moonshot.MoonshotChatOptions;
@@ -104,7 +103,8 @@ public class AiUtils {
     public static Map<String, Object> buildCommonToolContext() {
         Map<String, Object> context = new HashMap<>();
         context.put(TOOL_CONTEXT_LOGIN_USER, SecurityFrameworkUtils.getLoginUser());
-        context.put(TOOL_CONTEXT_TENANT_ID, TenantContextHolder.getTenantId());
+        context.put(TOOL_CONTEXT_TENANT_ID, SecurityFrameworkUtils.getLoginUser() != null
+                ? SecurityFrameworkUtils.getLoginUser().getTenantId() : null);
         return context;
     }
 

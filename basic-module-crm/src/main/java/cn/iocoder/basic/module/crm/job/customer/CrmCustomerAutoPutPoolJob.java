@@ -1,7 +1,6 @@
 package cn.iocoder.basic.module.crm.job.customer;
 
 import cn.iocoder.basic.framework.quartz.core.handler.JobHandler;
-import cn.iocoder.basic.framework.tenant.core.job.TenantJob;
 import cn.iocoder.basic.module.crm.service.customer.CrmCustomerService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Component;
@@ -18,7 +17,6 @@ public class CrmCustomerAutoPutPoolJob implements JobHandler {
     private CrmCustomerService customerService;
 
     @Override
-    @TenantJob
     public String execute(String param) {
         int count = customerService.autoPutCustomerPool();
         return String.format("掉入公海客户 %s 个", count);

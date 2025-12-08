@@ -1,6 +1,5 @@
 package cn.iocoder.basic.module.system.dal.dataobject.sms;
 
-import cn.iocoder.basic.framework.tenant.core.aop.TenantIgnore;
 import cn.iocoder.basic.module.system.enums.sms.SmsTemplateTypeEnum;
 import cn.iocoder.basic.framework.common.enums.CommonStatusEnum;
 import cn.iocoder.basic.framework.mybatis.core.dataobject.BaseDO;
@@ -25,7 +24,6 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-@TenantIgnore
 public class SmsTemplateDO extends BaseDO {
 
     /**

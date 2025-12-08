@@ -3,7 +3,6 @@ package cn.iocoder.basic.module.iot.service.product;
 import cn.hutool.core.collection.CollUtil;
 import cn.iocoder.basic.framework.common.pojo.PageResult;
 import cn.iocoder.basic.framework.common.util.object.BeanUtils;
-import cn.iocoder.basic.framework.tenant.core.aop.TenantIgnore;
 import cn.iocoder.basic.module.iot.controller.admin.product.vo.product.IotProductPageReqVO;
 import cn.iocoder.basic.module.iot.controller.admin.product.vo.product.IotProductSaveReqVO;
 import cn.iocoder.basic.module.iot.dal.dataobject.product.IotProductDO;
@@ -119,7 +118,6 @@ public class IotProductServiceImpl implements IotProductService {
 
     @Override
     @Cacheable(value = RedisKeyConstants.PRODUCT, key = "#id", unless = "#result == null")
-    @TenantIgnore // 忽略租户信息
     public IotProductDO getProductFromCache(Long id) {
         return productMapper.selectById(id);
     }

@@ -1,7 +1,6 @@
 package cn.iocoder.basic.module.iot.dal.dataobject.rule;
 
 import cn.iocoder.basic.framework.common.enums.CommonStatusEnum;
-import cn.iocoder.basic.framework.tenant.core.db.TenantBaseDO;
 import cn.iocoder.basic.module.iot.core.mq.message.IotDeviceMessage;
 import cn.iocoder.basic.module.iot.dal.dataobject.alert.IotAlertConfigDO;
 import cn.iocoder.basic.module.iot.dal.dataobject.device.IotDeviceDO;
@@ -34,7 +33,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class IotSceneRuleDO extends TenantBaseDO {
+public class IotSceneRuleDO extends BaseDO {
 
     /**
      * 场景联动编号
