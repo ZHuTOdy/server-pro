@@ -22,6 +22,7 @@
         <module name="basic-module-system" />
         <module name="basic-spring-boot-starter-redis" />
         <module name="basic-spring-boot-starter-protection" />
+        <module name="basic-module-bpm" />
         <module name="basic-common" />
         <module name="basic-spring-boot-starter-websocket" />
         <module name="basic-spring-boot-starter-job" />
@@ -36,6 +37,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="basic-common" options="-parameters" />
+      <module name="basic-module-bpm" options="-parameters" />
       <module name="basic-module-infra" options="-parameters" />
       <module name="basic-module-system" options="-parameters" />
       <module name="basic-server" options="-parameters" />

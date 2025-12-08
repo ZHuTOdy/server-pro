@@ -5,7 +5,6 @@ import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.extra.spring.SpringUtil;
 import cn.iocoder.basic.framework.common.core.KeyValue;
 import cn.iocoder.basic.framework.common.util.json.JsonUtils;
-import cn.iocoder.basic.framework.tenant.core.util.TenantUtils;
 import cn.iocoder.basic.module.bpm.controller.admin.definition.vo.form.BpmFormFieldVO;
 import cn.iocoder.basic.module.bpm.dal.dataobject.definition.BpmProcessDefinitionInfoDO;
 import cn.iocoder.basic.module.bpm.enums.definition.BpmModelFormTypeEnum;
@@ -69,21 +68,13 @@ public class FlowableUtils {
         if (ObjectUtil.isEmpty(tenantIdStr)
                 || Objects.equals(tenantIdStr, ProcessEngineConfiguration.NO_TENANT_ID)) {
             runnable.run();
-        } else {
-            Long tenantId = Long.valueOf(tenantIdStr);
-            TenantUtils.execute(tenantId, runnable);
         }
     }
 
     @SneakyThrows
     public static <V> V execute(String tenantIdStr, Callable<V> callable) {
-        if (ObjectUtil.isEmpty(tenantIdStr)
-                || Objects.equals(tenantIdStr, ProcessEngineConfiguration.NO_TENANT_ID)) {
-            return callable.call();
-        } else {
-            Long tenantId = Long.valueOf(tenantIdStr);
-            return TenantUtils.execute(tenantId, callable);
-        }
+        ObjectUtil.isEmpty(tenantIdStr);
+        return callable.call();
     }
 
     // ========== Execution 相关的工具方法 ==========

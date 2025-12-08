@@ -16,7 +16,7 @@
         <module>basic-module-system</module>
         <module>basic-module-infra</module>
 <!--        <module>basic-module-member</module>-->
-<!--        <module>basic-module-bpm</module>-->
+        <module>basic-module-bpm</module>
 <!--        <module>basic-module-report</module>-->
 <!--        <module>basic-module-mp</module>-->
 <!--        <module>basic-module-pay</module>-->
